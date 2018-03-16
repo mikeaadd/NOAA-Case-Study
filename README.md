@@ -8,7 +8,7 @@
 
 - hourly weather data from the Denver Airport Weather Station from 1989 to 2018
 
-- 35800 rows and 19 columns
+- 358000 rows and 19 columns
 
 - station_name', 'datetime', 'report_type', 'sky_conditions', 'visibility', 'weather_type', 'dry_bulb_tmpF', 'wet_bulb_tmpF',
 'dew_point_tmpF', 'humidity', 'wind_speed', 'gust_speed', 'pressure', 'pressure_tedency', 'pressure_change', 'sea_lvl_pressure','precipitation', 'northward', 'eastward'
@@ -101,10 +101,11 @@
 | visibility_min        | -1.018 |
 | sea_lvl_pressure_max  |  0.89  |
 
+
+# Final Results!
+
 - logistic by month (controlling for seasonality
-- Final Results!
-
-
+    
 |         |   Train |   Test |   Tampa |
 |:--------|--------:|-------:|--------:|
 | Jan     |   0.946 |  0.866 |   0.894 |
