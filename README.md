@@ -41,13 +41,13 @@
 
 - Correlation Heatmap
 
-![alt text](https://github.com/mikeaadd/NOAA-Case-Study/img/hist_y.png "Correlation Heat Map")
+![heat map](https://github.com/mikeaadd/NOAA-Case-Study/raw/master/img/corr_heat.png "Correlation Heat Map")
 
 - Histogram of target Variable, precipitation
 
-![alt text](https://github.com/mikeaadd/NOAA-Case-Study/img/hist_y.png "Histogram of Y")
+![Hist Y](https://github.com/mikeaadd/NOAA-Case-Study/raw/master/img/hist_y.png "Histogram of Y")
 
-![alt text](https://github.com/mikeaadd/NOAA-Case-Study/img/hist_logy.png "Histogram of log(Y)")
+![Hist LogY](https://github.com/mikeaadd/NOAA-Case-Study/raw/master/img/hist_logy.png "Histogram of log(Y)")
 
 - point biserial of all predictors by target
 
