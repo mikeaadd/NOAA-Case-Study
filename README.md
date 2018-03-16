@@ -41,7 +41,17 @@
 
 - Correlation Heatmap
 
+![alt text](https://github.com/mikeaadd/NOAA-Case-Study/img/hist_y.png "Correlation Heat Map")
+
 - Histogram of target Variable, precipitation
+
+![alt text](https://github.com/mikeaadd/NOAA-Case-Study/img/hist_y.png "Histogram of Y")
+
+![alt text](https://github.com/mikeaadd/NOAA-Case-Study/img/hist_logy.png "Histogram of log(Y)")
+
+- point biserial of all predictors by target
+
+<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>Var</th>\n      <th>R</th>\n      <th>p</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>5</th>\n      <td>visibility_min</td>\n      <td>-0.631</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>15</th>\n      <td>humidity_mean</td>\n      <td>0.560</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>visibility_mean</td>\n      <td>-0.507</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>17</th>\n      <td>humidity_min</td>\n      <td>0.505</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>16</th>\n      <td>humidity_max</td>\n      <td>0.493</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>14</th>\n      <td>dew_point_tmpF_min</td>\n      <td>0.245</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>12</th>\n      <td>dew_point_tmpF_mean</td>\n      <td>0.243</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>27</th>\n      <td>pressure_change_mean</td>\n      <td>-0.234</td>\n      <td>0.0</td>\n    </tr>\n  </tbody>\n</table>
 
 # Modeling
 
@@ -62,21 +72,11 @@
 
 - logistic by month (controlling for seasonality)
 
-<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>Train</th>\n      <th>Test</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>Apr</th>\n      <td>0.943</td>\n      <td>0.912</td>\n    </tr>\n    <tr>\n      <th>Aug</th>\n      <td>0.915</td>\n      <td>0.876</td>\n    </tr>\n    <tr>\n      <th>Dec</th>\n      <td>0.975</td>\n      <td>0.925</td>\n    </tr>\n    <tr>\n      <th>Feb</th>\n      <td>0.919</td>\n      <td>0.865</td>\n    </tr>\n    <tr>\n      <th>Jan</th>\n      <td>0.946</td>\n      <td>0.866</td>\n    </tr>\n    <tr>\n      <th>Jul</th>\n      <td>0.873</td>\n      <td>0.886</td>\n    </tr>\n    <tr>\n      <th>Jun</th>\n      <td>0.935</td>\n      <td>0.915</td>\n    </tr>\n    <tr>\n      <th>Mar</th>\n      <td>0.954</td>\n      <td>0.907</td>\n    </tr>\n    <tr>\n      <th>May</th>\n      <td>0.903</td>\n      <td>0.904</td>\n    </tr>\n    <tr>\n      <th>Nov</th>\n      <td>0.969</td>\n      <td>0.916</td>\n    </tr>\n    <tr>\n      <th>Oct</th>\n      <td>0.956</td>\n      <td>0.916</td>\n    </tr>\n    <tr>\n      <th>Sep</th>\n      <td>0.930</td>\n      <td>0.889</td>\n    </tr>\n    <tr>\n      <th>Overall</th>\n      <td>94.500</td>\n      <td>0.942</td>\n    </tr>\n  </tbody>\n</table>
-
 
 <table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>Train</th>\n      <th>Test</th>\n      <th>Tampa</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>Apr</th>\n      <td>0.943</td>\n      <td>0.912</td>\n      <td>0.846</td>\n    </tr>\n    <tr>\n      <th>Aug</th>\n      <td>0.915</td>\n      <td>0.876</td>\n      <td>0.848</td>\n    </tr>\n    <tr>\n      <th>Dec</th>\n      <td>0.975</td>\n      <td>0.925</td>\n      <td>0.767</td>\n    </tr>\n    <tr>\n      <th>Feb</th>\n      <td>0.919</td>\n      <td>0.865</td>\n      <td>0.788</td>\n    </tr>\n    <tr>\n      <th>Jan</th>\n      <td>0.946</td>\n      <td>0.866</td>\n      <td>0.894</td>\n    </tr>\n    <tr>\n      <th>Jul</th>\n      <td>0.873</td>\n      <td>0.886</td>\n      <td>0.863</td>\n    </tr>\n    <tr>\n      <th>Jun</th>\n      <td>0.935</td>\n      <td>0.915</td>\n      <td>0.894</td>\n    </tr>\n    <tr>\n      <th>Mar</th>\n      <td>0.954</td>\n      <td>0.907</td>\n      <td>0.900</td>\n    </tr>\n    <tr>\n      <th>May</th>\n      <td>0.903</td>\n      <td>0.904</td>\n      <td>0.888</td>\n    </tr>\n    <tr>\n      <th>Nov</th>\n      <td>0.969</td>\n      <td>0.916</td>\n      <td>0.826</td>\n    </tr>\n    <tr>\n      <th>Oct</th>\n      <td>0.956</td>\n      <td>0.916</td>\n      <td>0.878</td>\n    </tr>\n    <tr>\n      <th>Sep</th>\n      <td>0.930</td>\n      <td>0.889</td>\n      <td>0.926</td>\n    </tr>\n    <tr>\n      <th>Overall</th>\n      <td>94.500</td>\n      <td>0.942</td>\n      <td>0.904</td>\n    </tr>\n  </tbody>\n</table>
 
+# Final Thoughts
 
-# Roadmap
+- use near by weather stations
 
-1. compare to baseline model and model with extra lag variables so model can see further in past
-
-...
-
-...
-
-2. use final model to get metrics on testing data
-
-3. compare final model to data from a completely different station
-    - does model fit data to a specific station or is it more generalizable?
+- HLM
