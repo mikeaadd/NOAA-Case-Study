@@ -15,7 +15,16 @@
 
 - missing data in primarily gust_speed and weather type
 
-<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>Total</th>\n      <th>Percent</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>gust_speed</th>\n      <td>310749</td>\n      <td>0.868</td>\n    </tr>\n    <tr>\n      <th>weather_type</th>\n      <td>301449</td>\n      <td>0.842</td>\n    </tr>\n    <tr>\n      <th>pressure_change</th>\n      <td>238747</td>\n      <td>0.667</td>\n    </tr>\n    <tr>\n      <th>pressure_tedency</th>\n      <td>204502</td>\n      <td>0.571</td>\n    </tr>\n    <tr>\n      <th>precipitation</th>\n      <td>126642</td>\n      <td>0.354</td>\n    </tr>\n  </tbody>\n</table>
+|                  |   Total |   Percent |
+|:-----------------|--------:|----------:|
+| gust_speed       |  310749 |     0.868 |
+| weather_type     |  301449 |     0.842 |
+| pressure_change  |  238747 |     0.667 |
+| pressure_tedency |  204502 |     0.571 |
+| precipitation    |  126642 |     0.354 |
+| wet_bulb_tmpF    |   79204 |     0.221 |
+| pressure         |   79111 |     0.221 |
+| sea_lvl_pressure |   43019 |     0.12  |
 
 - all numeric except weather type and sky conditions
 
@@ -51,7 +60,16 @@
 
 - point biserial of all predictors by target
 
-<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>Var</th>\n      <th>R</th>\n      <th>p</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>5</th>\n      <td>visibility_min</td>\n      <td>-0.631</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>15</th>\n      <td>humidity_mean</td>\n      <td>0.560</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>visibility_mean</td>\n      <td>-0.507</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>17</th>\n      <td>humidity_min</td>\n      <td>0.505</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>16</th>\n      <td>humidity_max</td>\n      <td>0.493</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>14</th>\n      <td>dew_point_tmpF_min</td>\n      <td>0.245</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>12</th>\n      <td>dew_point_tmpF_mean</td>\n      <td>0.243</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>27</th>\n      <td>pressure_change_mean</td>\n      <td>-0.234</td>\n      <td>0.0</td>\n    </tr>\n  </tbody>\n</table>
+|    | Var                  |      R |   p |
+|---:|:---------------------|-------:|----:|
+|  0 | visibility_min       | -0.631 |   0 |
+|  1 | humidity_mean        |  0.56  |   0 |
+|  2 | visibility_mean      | -0.507 |   0 |
+|  3 | humidity_min         |  0.505 |   0 |
+|  4 | humidity_max         |  0.493 |   0 |
+|  5 | dew_point_tmpF_min   |  0.245 |   0 |
+|  6 | dew_point_tmpF_mean  |  0.243 |   0 |
+|  7 | pressure_change_mean | -0.234 |   0 |
 
 # Modeling
 
@@ -64,19 +82,47 @@
 
 - mean results...
 
-<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>Log Regression</th>\n      <th>Log Regression(Lasso)</th>\n      <th>Log Regression(Ridge)</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>accuracy</th>\n      <td>0.885</td>\n      <td>0.884</td>\n      <td>0.882</td>\n    </tr>\n    <tr>\n      <th>auc</th>\n      <td>0.943</td>\n      <td>0.943</td>\n      <td>0.943</td>\n    </tr>\n    <tr>\n      <th>precision</th>\n      <td>0.776</td>\n      <td>0.776</td>\n      <td>0.774</td>\n    </tr>\n    <tr>\n      <th>recall</th>\n      <td>0.756</td>\n      <td>0.748</td>\n      <td>0.741</td>\n    </tr>\n  </tbody>\n</table>
+|                       |   accuracy |   auc |   precision |   recall |
+|:----------------------|-----------:|------:|------------:|---------:|
+| Log Regression        |      0.888 | 0.945 |       0.787 |    0.757 |
+| Log Regression(Lasso) |      0.886 | 0.945 |       0.786 |    0.745 |
+| Log Regression(Ridge) |      0.885 | 0.945 |       0.783 |    0.745 |
 
 - wet bulb and dew point were surprisingly predictive
 
-<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>Beta</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>wet_bulb_tmpF_max</th>\n      <td>-5.073</td>\n    </tr>\n    <tr>\n      <th>dew_point_tmpF_max</th>\n      <td>4.784</td>\n    </tr>\n    <tr>\n      <th>sea_lvl_pressure_mean</th>\n      <td>-1.410</td>\n    </tr>\n    <tr>\n      <th>dry_bulb_tmpF_max</th>\n      <td>1.285</td>\n    </tr>\n    <tr>\n      <th>dry_bulb_tmpF_mean</th>\n      <td>-1.252</td>\n    </tr>\n    <tr>\n      <th>pressure_min</th>\n      <td>1.167</td>\n    </tr>\n    <tr>\n      <th>visibility_min</th>\n      <td>-1.018</td>\n    </tr>\n    <tr>\n      <th>sea_lvl_pressure_max</th>\n      <td>0.890</td>\n    </tr>\n  </tbody>\n</table>
+|                       |   Beta |
+|:----------------------|-------:|
+| wet_bulb_tmpF_max     | -5.073 |
+| dew_point_tmpF_max    |  4.784 |
+| sea_lvl_pressure_mean | -1.41  |
+| dry_bulb_tmpF_max     |  1.285 |
+| dry_bulb_tmpF_mean    | -1.252 |
+| pressure_min          |  1.167 |
+| visibility_min        | -1.018 |
+| sea_lvl_pressure_max  |  0.89  |
 
-- logistic by month (controlling for seasonality)
+- logistic by month (controlling for seasonality
+- Final Results!
 
 
-<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>Train</th>\n      <th>Test</th>\n      <th>Tampa</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>Apr</th>\n      <td>0.943</td>\n      <td>0.912</td>\n      <td>0.846</td>\n    </tr>\n    <tr>\n      <th>Aug</th>\n      <td>0.915</td>\n      <td>0.876</td>\n      <td>0.848</td>\n    </tr>\n    <tr>\n      <th>Dec</th>\n      <td>0.975</td>\n      <td>0.925</td>\n      <td>0.767</td>\n    </tr>\n    <tr>\n      <th>Feb</th>\n      <td>0.919</td>\n      <td>0.865</td>\n      <td>0.788</td>\n    </tr>\n    <tr>\n      <th>Jan</th>\n      <td>0.946</td>\n      <td>0.866</td>\n      <td>0.894</td>\n    </tr>\n    <tr>\n      <th>Jul</th>\n      <td>0.873</td>\n      <td>0.886</td>\n      <td>0.863</td>\n    </tr>\n    <tr>\n      <th>Jun</th>\n      <td>0.935</td>\n      <td>0.915</td>\n      <td>0.894</td>\n    </tr>\n    <tr>\n      <th>Mar</th>\n      <td>0.954</td>\n      <td>0.907</td>\n      <td>0.900</td>\n    </tr>\n    <tr>\n      <th>May</th>\n      <td>0.903</td>\n      <td>0.904</td>\n      <td>0.888</td>\n    </tr>\n    <tr>\n      <th>Nov</th>\n      <td>0.969</td>\n      <td>0.916</td>\n      <td>0.826</td>\n    </tr>\n    <tr>\n      <th>Oct</th>\n      <td>0.956</td>\n      <td>0.916</td>\n      <td>0.878</td>\n    </tr>\n    <tr>\n      <th>Sep</th>\n      <td>0.930</td>\n      <td>0.889</td>\n      <td>0.926</td>\n    </tr>\n    <tr>\n      <th>Overall</th>\n      <td>94.500</td>\n      <td>0.942</td>\n      <td>0.904</td>\n    </tr>\n  </tbody>\n</table>
+|         |   Train |   Test |   Tampa |
+|:--------|--------:|-------:|--------:|
+| Jan     |   0.946 |  0.866 |   0.894 |
+| Feb     |   0.919 |  0.865 |   0.788 |
+| Mar     |   0.954 |  0.907 |   0.9   |
+| Apr     |   0.943 |  0.912 |   0.846 |
+| May     |   0.903 |  0.904 |   0.888 |
+| Jun     |   0.935 |  0.915 |   0.894 |
+| Jul     |   0.873 |  0.886 |   0.863 |
+| Aug     |   0.915 |  0.876 |   0.848 |
+| Sep     |   0.93  |  0.889 |   0.926 |
+| Oct     |   0.956 |  0.916 |   0.878 |
+| Nov     |   0.969 |  0.916 |   0.826 |
+| Dec     |   0.975 |  0.925 |   0.767 |
+| Overall |  94.5   |  0.942 |   0.904 |
 
 # Final Thoughts
 
 - use near by weather stations
 
-- HLM
+- Try to further control for seasonality
