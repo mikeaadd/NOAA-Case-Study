@@ -10,8 +10,27 @@
 
 - 358000 rows and 19 columns
 
-- station_name', 'datetime', 'report_type', 'sky_conditions', 'visibility', 'weather_type', 'dry_bulb_tmpF', 'wet_bulb_tmpF',
-'dew_point_tmpF', 'humidity', 'wind_speed', 'gust_speed', 'pressure', 'pressure_tedency', 'pressure_change', 'sea_lvl_pressure','precipitation', 'northward', 'eastward'
+- Variable Info!
+
+|    | Variable         | dtype          | Description                                                                                                           |
+|---:|:-----------------|:---------------|:----------------------------------------------------------------------------------------------------------------------|
+|  0 | station_name     | object         | Date of Observation to the minute                                                                                     |
+|  1 | datetime         | datetime64[ns] | Code for type of station making observation                                                                           |
+|  2 | report_type      | object         | Cloud Type indicating percent coverage                                                                                |
+|  3 | sky_conditions   | int64          | Horizontal Distance an object can be seen                                                                             |
+|  4 | visibility       | float64        | Code for type of station making observation                                                                           |
+|  5 | weather_type     | object         | A series of codes summarizing the rest of the data                                                                    |
+|  6 | dry_bulb_tmpF    | float64        | Standard Air Temperature Reported                                                                                     |
+|  7 | wet_bulb_tmpF    | float64        | Temperature subtracted by dewpoint depression                                                                         |
+|  8 | dew_point_tmpF   | float64        | Temperature at which air can no longer hold all of its water vapor                                                    |
+|  9 | humidity         | float64        | This is the relative humidity given to the nearest whole percentageSpeed of the wind at the time of observation (mph) |
+| 10 | wind_speed       | float64        | Wind direction from true north using compass directions (degrees)                                                     |
+| 11 | gust_speed       | float64        | Wind gusts occurring during time of observation                                                                       |
+| 12 | pressure         | float64        | Atmospheric pressure observed at the station during the time of observation. (in Hg)                                  |
+| 13 | pressure_tedency | float64        | Pressure tendency of the last few hours                                                                               |
+| 14 | pressure_change  | float64        | Difference in pressure over the past 3 hours.                                                                         |
+| 15 | sea_lvl_pressure | float64        | Sea level pressure in Hg                                                                                              |
+| 16 | precipitation    | float64        | Amount of precipitation in inches to hundredths over the past hour.                                                   |
 
 - missing data in primarily gust_speed and weather type
 
@@ -105,7 +124,7 @@
 # Final Results!
 
 - logistic by month (controlling for seasonality
-    
+
 |         |   Train |   Test |   Tampa |
 |:--------|--------:|-------:|--------:|
 | Jan     |   0.946 |  0.866 |   0.894 |
@@ -124,6 +143,6 @@
 
 # Final Thoughts
 
-- use near by weather stations
+- Take into account near by weather stations
 
 - Try to further control for seasonality
